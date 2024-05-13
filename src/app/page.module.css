@@ -1,42 +1,42 @@
-.firstScreen{
+.firstScreen {
   height: calc(100vh - 134px);
   width: 100%;
   overflow: hidden;
+  display: flex;
 }
 
-.introduce{
-  position: absolute;
-  top: 60px;
-  right: 10%;
-  max-width: 30vw;
-  font-family:'Noto Serif SC';
+.introduce {
+  height: 100%;
+  font-family: "Noto Serif SC";
+  padding: 0 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
 }
 .introduce > p {
   font-size: 32px;
   line-height: 2;
 }
 .introduce > h1 {
-
   font-size: 60px;
   margin-block: -42px 40px;
   font-weight: 900;
 }
-.xk{
-  position: absolute;
-  right: -50px;
-  
+.xk {
 }
-.logo{
+.logo {
   position: relative;
   right: 80px;
 }
-.btn{
+.btn {
+  width: fit-content;
   position: relative;
   padding: 4px 80px;
   background-color: #000;
   color: #fff;
   border: none;
-  font-family:'Noto Serif SC';
+  font-family: "Noto Serif SC";
   font-size: 26px;
   margin-block: 60px;
   border-radius: 50px;
@@ -48,8 +48,8 @@
   border: 4px solid #fff;
   cursor: pointer;
 }
-.btn::after{
-  content: '';
+.btn::after {
+  content: "";
   background-color: #000;
   width: 108%;
   height: 140%;
@@ -57,113 +57,115 @@
   z-index: -1;
   border-radius: 50px;
 }
-.news{
+.news {
   height: 100vh;
   padding: 10%;
   position: relative;
 }
-.newsName{
+.newsName {
   font-size: 60px;
   font-weight: 900;
-  font-family:'Noto Serif SC';
+  font-family: "Noto Serif SC";
   margin-inline: 20px;
 }
-.newsName span{
+.newsName span {
   font-size: 26px;
-  font-family:'Smiley sans';
-
+  font-family: "Smiley sans";
 }
-.news-boxes{
+.news-boxes {
   display: flex;
   gap: 20px;
   margin-block: 40px;
   flex-wrap: wrap;
 }
-.news-box{
+.news-box {
   position: relative;
   width: calc(50% - 10px);
   height: 300px;
   border: #000 2px solid;
   padding: 10px 40px;
-  font-family:'Smiley sans';
+  font-family: "Smiley sans";
   background-color: #fff;
   cursor: pointer;
   box-shadow: 0px 0px #00000000;
   transition: all 0.2s;
 }
-.news-box:hover{
+.news-box:hover {
   box-shadow: 5px 5px #000;
 }
 
-.news-title{
+.news-title {
   font-size: 22px;
   margin-block: 10px;
 }
-.news-time{
+.news-time {
   position: absolute;
   bottom: 20px;
   right: 40px;
 }
-.news-content{
+.news-content {
   max-height: 200px;
   overflow: hidden;
   font-size: 18px;
   text-overflow: ellipsis;
 }
-.moreInfo{
+.moreInfo {
   font-size: 22px;
-  font-family:'Smiley sans';
+  font-family: "Smiley sans";
   margin-block: 20px;
   position: absolute;
   right: 10%;
 }
-.moreInfo::after{
-  content: '';
+.moreInfo::after {
+  content: "";
   display: block;
   position: absolute;
   width: 100%;
   height: 2px;
   background-color: #000;
 }
-.huashuo{
+.huashuo {
   height: 100vh;
-  padding: 10% 20%;
+  padding: 5% 10%;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
-.logos{
+.logos {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap:5%;
 }
-.huashuo > section{
-  width: 25%;
-  position: absolute;
-  right: 20%;
-  top: calc(15% + 360px);
+.huashuo > section {
+  width: 45%;
   font-family: "Noto Serif SC";
   font-size: 28px;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
-.contact{
+.contact {
   height: 100vh;
   padding: 15% 10%;
   position: relative;
   display: flex;
   justify-content: space-around;
 }
-.contact > div{
+.contact > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
-.contact > div > p{
+.contact > div > p {
   font-size: 28px;
   font-family: "Smiley sans";
 }
-.contact > div > div{
+.contact > div > div {
   flex: 1;
   display: flex;
   justify-content: center;

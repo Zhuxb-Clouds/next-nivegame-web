@@ -15,6 +15,7 @@ export default function Home() {
       <div className={styles.firstScreen}>
         <Image
           width="50vw"
+          height="auto"
           src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E4%BE%A0%E5%AE%A2.png"
           preview={false}
           alt="xk"
@@ -68,27 +69,29 @@ export default function Home() {
         <div className={styles.logos}>
           <Image
             preview={false}
-            height="200px"
+            width="400px"
+            height="auto"
             alt=""
             src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4logo%E9%80%8F%E6%98%8E.png"
           ></Image>
           <Image
             preview={false}
             alt=""
-            height="200px"
+            width="400px"
+            height="auto"
             src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
           ></Image>
           <Image
             preview={false}
-            height="200px"
+            width="400px"
+            height="auto"
             alt=""
             src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E5%84%BF%E5%A5%B3%E6%83%85%E9%95%BFlogo.png"
           ></Image>
         </div>
         <Image
           preview={false}
-          style={{ left: "-80px", position: "relative" }}
-          height="700px"
+          width="50%"
           alt=""
           src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/newBox.png"
         ></Image>

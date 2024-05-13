@@ -11,8 +11,8 @@ const news = new Array(4).fill({
 });
 export default function Home() {
   return (
-    <div className="container">
-      <div className={styles.firstScreen}>
+    <div className={styles.container}>
+      <div className={styles.firstScreen} >
         <Image
           width="50vw"
           height="auto"
@@ -46,15 +46,15 @@ export default function Home() {
           </button>
         </section>
       </div>
-      <div className={styles.news}>
-        <div className={styles.newsName}>
-          <p>
+      <div className={styles.news} id="news" >
+        <div className={styles.newsName} >
+          <p >
             最新动态 <span>news</span>
           </p>
         </div>
-        <div className={styles["news-boxes"]}>
+        <div className={styles["news-boxes"]} >
           {news.map((item, index) => (
-            <div className={styles["news-box"]} key={index}>
+            <div className={styles["news-box"]} key={index} >
               <p className={styles["news-title"]}>{item.title}</p>
               <p className={styles["news-content"]}>{item.content}</p>
               <p className={styles["news-time"]}>{item.time}</p>
@@ -65,8 +65,8 @@ export default function Home() {
           {"更多动态 ->"}
         </a>
       </div>
-      <div className={styles.huashuo}>
-        <div className={styles.logos}>
+      <div className={styles.huashuo} id="HuaShuo" >
+        <div className={styles.logos} >
           <Image
             preview={false}
             width="400px"
@@ -94,8 +94,9 @@ export default function Home() {
           width="50%"
           alt=""
           src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/newBox.png"
+          
         ></Image>
-        <section>
+        <section >
           <p>
             可否记得老旧书本中字里行间中的<strong>侠骨柔情</strong>？
           </p>
@@ -115,16 +116,16 @@ export default function Home() {
           </p>
         </section>
       </div>
-      <div className={styles.contact}>
-        <div>
-          <p>玩家社群</p>
-          <div>
+      <div className={styles.contact} id="about" >
+        <div >
+          <p >玩家社群</p>
+          <div >
             <NImage src={qq} alt=""></NImage>
           </div>
         </div>
-        <div>
-          <p>联系我们</p>
-          <div>
+        <div >
+          <p >联系我们</p>
+          <div >
             <NImage src={wechat} alt=""></NImage>
           </div>
         </div>

@@ -1,6 +1,10 @@
-import * as React from "react";
+
 import Header from "../components/Header";
+import Footer from "@/components/Footer";
+import React, { useState, useEffect } from 'react';
 import "./globals.css";
+
+
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -15,6 +19,7 @@ export default function Layout({ children }: LayoutProps) {
       <body>
         <Header></Header>
         <main>{children}</main>
+        <Footer></Footer>
       </body>
     </html>
   );

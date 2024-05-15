@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import React, { useState, useEffect } from "react";
 import "./globals.css";
 import "./post.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 type LayoutProps = {
   children: React.ReactNode;
@@ -19,7 +20,10 @@ export default function Layout({ children }: LayoutProps) {
     <html>
       <body>
         <Header></Header>
-        <main>{children}</main>
+        <main>
+          {children}
+          <SpeedInsights />
+        </main>
         <Footer></Footer>
       </body>
     </html>

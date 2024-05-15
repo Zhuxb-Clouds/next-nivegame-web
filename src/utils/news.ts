@@ -45,7 +45,7 @@ export function getAllNew(): Array<{
     return {
       id,
       ...(matterResult.data as MatterMark["data"]),
-      content: matterResult.content.match(/[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]/g)?.join("") || ""
+      content: matterResult.content.match(/[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\u2026]/g)?.join("") || ""
     };
   });
 

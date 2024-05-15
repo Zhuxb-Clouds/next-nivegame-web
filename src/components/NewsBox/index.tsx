@@ -9,15 +9,15 @@ interface BoxProps {
 }
 
 function Box(prop: BoxProps) {
+  const maxTextNumber = prop.maxTextNumber || 200;
+  const content =
+    prop.content.length > maxTextNumber
+      ? prop.content.slice(0, maxTextNumber) + "..."
+      : prop.content;
   return (
-    <a
-      href={"/new/" + prop.id}
-      className={styles["news-box"]}
-    >
+    <a href={"/new/" + prop.id} className={styles["news-box"]}>
       <p className={styles["news-title"]}>{prop.title}</p>
-      <p className={styles["news-content"]}>
-        {prop.content.slice(0, prop.maxTextNumber || 200) + "..."}
-      </p>
+      <p className={styles["news-content"]}>{content}</p>
       <p className={styles["news-time"]}>{prop.date} </p>
     </a>
   );

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Header></Header>
         <main>

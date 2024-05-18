@@ -4,6 +4,7 @@ import path from 'path';
 // gray-matter：获取元数据
 import matter from 'gray-matter';
 import { parseISO } from "date-fns";
+import pinyin from 'js-pinyin'
 interface MatterMark {
   data: { date: string; title: string; };
   content: string;
@@ -26,6 +27,7 @@ export function getAllNew(): Array<{
   date: string;
   title: string;
   content: string;
+  preview: string;
 }> {
   // 获取所有md文件用于展示首页列表的数据，包含id，元数据（标题，时间）
   const allNewsData = fileNames.map((fileName) => {
@@ -45,7 +47,9 @@ export function getAllNew(): Array<{
     return {
       id,
       ...(matterResult.data as MatterMark["data"]),
-      content: matterResult.content.match(/[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\u2026]/g)?.join("") || ""
+      preview: matterResult.content.match(/[\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b\u2026]/g)?.join("") || "",
+      content: matterResult.content,
+      
     };
   });
 
@@ -55,15 +59,6 @@ export function getAllNew(): Array<{
   });
 }
 
-// function getPinYin(str: string) {
-//   const name = str.replace(/\.md$/, "");
-//   const id = pinyin(name, {
-//     style: "normal",
-//     heteronym: false,
-//   }).join("-")
-//   console.log('id',id)
-//   return id;
-// }
 
 // 获取指定文章内容
 export async function getNewsData(id: string) {
@@ -86,5 +81,9 @@ export async function getNewsData(id: string) {
 
 export function getUuid(fileName: string): string {
   const name = fileName.replace(/\.md$/, "");
+  // 获取name里所有的中文字符
+  // const cnName = name.match(/[\u4e00-\u9fa5]/g)?.join("") || "";
+  // pinyin.setOptions({checkPolyphone: false, charCase: 1});
+  // return pinyin.getFullChars(cnName);
   return name;
 }

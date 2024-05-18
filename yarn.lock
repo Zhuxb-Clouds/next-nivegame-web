@@ -2035,6 +2035,11 @@ jackspeak@^2.3.5:
   optionalDependencies:
     "@pkgjs/parseargs" "^0.11.0"
 
+js-pinyin@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.npmmirror.com/js-pinyin/-/js-pinyin-0.2.5.tgz#cba749a40bf556064fda73176d647883a2092ecc"
+  integrity sha512-XuqAZ9fctWCzKx/ALgsDRtfd/xwaC/IyAwkDkW8jTXhlVNRuj+lG2tKEOWraCHLgaOSPkSFFWXB3qjfNTaMU6A==
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

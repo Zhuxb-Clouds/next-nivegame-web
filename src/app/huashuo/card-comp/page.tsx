@@ -18,7 +18,7 @@ export default function Page() {
     // 如果一句进行到结尾，则插入换行，通过句号、感叹号、问号、省略号、破折号、来判断，这里只考虑中文，句子最末尾不换行
     const sentences = text.split("\r\n");
     return (
-      <div>
+      <>
         {sentences.map((sentence, index) => {
           return (
             <div key={index}>
@@ -27,7 +27,7 @@ export default function Page() {
             </div>
           );
         })}
-      </div>
+      </>
     );
   };
   const columns = [

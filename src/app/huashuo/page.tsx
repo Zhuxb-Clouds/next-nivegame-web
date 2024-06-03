@@ -1,5 +1,8 @@
 import style from "./page.module.css";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "话说 实用工具",
+};
 export default async function Page() {
   return (
     <>

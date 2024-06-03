@@ -35,15 +35,14 @@ export default function Home() {
             为形式的原创卡牌游戏。它的玩法类似于故事接龙，多名玩家通过抽取卡片轮流进行故事讲述，期间需要完成一些特定情节获得结局，并将故事走向引导至自己的结局。
           </p>
 
-          <button className={styles.btn}>
-            <a
-              href="https://item.taobao.com/item.htm?abbucket=13&id=750584104149"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              立刻获取
-            </a>
-          </button>
+          <a
+            className={styles.btn}
+            href="https://item.taobao.com/item.htm?abbucket=13&id=750584104149"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            立刻获取
+          </a>
         </section>
       </div>
       <div className={styles.news} id="news">
@@ -110,11 +109,7 @@ export default function Home() {
             我们希望能够以现实为载体，让那些有趣的故事不再只会停留在一个人的脑海里，而是在大家的思维碰撞下呈现出来耀眼的火花，玩家亦是主角亦是创造者。
           </p>
           <p>
-            <a
-              href="/huashuo"
-              className={styles.moreInfo}
-              rel="noopener noreferrer"
-            >
+            <a href="/huashuo" className={styles.moreInfo} rel="noopener noreferrer">
               {"更多信息 ->"}
             </a>
           </p>

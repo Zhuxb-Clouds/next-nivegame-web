@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 134px);
+  gap: 40px;
+}
+.card {
+  height: 500px;
+  width: 300px;
+  border-radius: 20px;
+  /* 文字纵向排列 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 700;
+  color: #fff;
+  background-image: url(../../assets/image/back.png);
+  background-size: cover;
+  cursor: pointer;
+  /* 字高 */
+  line-height: 80px;
+  transition: transform 0.5s;
+
+}
+
+.card > span {
+  height: 80px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}

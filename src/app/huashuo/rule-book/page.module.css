@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  min-height: calc(100vh - 134px);
+  gap: 40px;
+  padding: 40px 0;
+}
+.item {
+  box-shadow: 2.3px 2.3px 1.9px rgba(0, 0, 0, 0.005), 5.4px 5.4px 4.3px rgba(0, 0, 0, 0.007),
+    9.7px 9.7px 7.7px rgba(0, 0, 0, 0.009), 16.1px 16.1px 12.8px rgba(0, 0, 0, 0.011),
+    26.5px 26.5px 21.2px rgba(0, 0, 0, 0.013), 46.2px 46.2px 37px rgba(0, 0, 0, 0.015),
+    100px 100px 80px rgba(0, 0, 0, 0.02);
+}

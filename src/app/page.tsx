@@ -11,14 +11,16 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.firstScreen}>
-        <Image
-          width="50vw"
-          height="auto"
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E4%BE%A0%E5%AE%A2.png"
-          preview={false}
-          alt="xk"
-          className={styles.xk}
-        ></Image>
+        <div style={{ overflow: "hidden", height: "100%" }}>
+          <Image
+            width="50vw"
+            height="auto"
+            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E4%BE%A0%E5%AE%A2.png"
+            preview={false}
+            alt="xk"
+            className={styles.xk}
+          ></Image>
+        </div>
         <section className={styles.introduce}>
           <Image
             src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
@@ -106,6 +108,15 @@ export default function Home() {
 
           <p>
             我们希望能够以现实为载体，让那些有趣的故事不再只会停留在一个人的脑海里，而是在大家的思维碰撞下呈现出来耀眼的火花，玩家亦是主角亦是创造者。
+          </p>
+          <p>
+            <a
+              href="/huashuo"
+              className={styles.moreInfo}
+              rel="noopener noreferrer"
+            >
+              {"更多信息 ->"}
+            </a>
           </p>
         </section>
       </div>

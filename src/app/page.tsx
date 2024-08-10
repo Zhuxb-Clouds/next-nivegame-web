@@ -11,24 +11,37 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.firstScreen}>
-        <div style={{ overflow: "hidden", height: "100%" }}>
+        <div className={styles.xk}>
           <Image
-            width="50vw"
-            height="auto"
             src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E4%BE%A0%E5%AE%A2.png"
-            preview={false}
             alt="xk"
-            className={styles.xk}
+            id="xkImage"
+            width={"100%"}
+            height={"100%"}
+            preview={false}
+            style={{
+              objectFit: "contain",
+              objectPosition: "bottom",
+            }}
           ></Image>
         </div>
         <section className={styles.introduce}>
-          <Image
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
-            alt="gameLogo"
-            width={700}
-            preview={false}
-            className={styles.logo}
-          ></Image>
+          <div style={{
+            maxHeight: "calc(100vh - 134px - 86px - 320px - 53px - 60px)",
+          }}>
+            <Image
+              src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
+              alt="gameLogo"
+              width={"100%"}
+              height={"100%"}
+              preview={false}
+              className={styles.logo}
+              style={{
+                objectFit: "contain",
+                objectPosition: "bottom",
+              }}
+            ></Image>
+          </div>
           <h1>叙事类桌游</h1>
           <p>
             《话说！》是一款以<strong>武侠元素</strong>为内核，<strong>故事接龙</strong>
@@ -86,6 +99,7 @@ export default function Home() {
         </div>
         <Image
           preview={false}
+          className={styles.newBoxImage}
           width="50%"
           alt=""
           src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/newBox.png"

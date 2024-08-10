@@ -1,4 +1,5 @@
 .container {
+  width: 100%;
 }
 
 .firstScreen {
@@ -7,26 +8,30 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .introduce {
   font-family: "Noto Serif SC";
   padding: 0 20px;
-  flex: 1;
   display: flex;
   flex-direction: column;
   max-width: 750px;
+  width: 50%;
+  height: 100%;
 }
 .introduce > p {
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 2;
+  max-height: 320px;
 }
 .introduce > h1 {
   font-size: 60px;
-  margin-block: -42px 40px;
   font-weight: 900;
 }
 .xk {
+  width: 50%;
+  height: 100%;
 }
 .logo {
   position: relative;
@@ -41,7 +46,7 @@
   border: none;
   font-family: "Noto Serif SC";
   font-size: 26px;
-  margin-block: 60px;
+  margin-block: 30px;
   border-radius: 50px;
   /* 字间距 */
   letter-spacing: 6px;
@@ -142,4 +147,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .xk {
+    display: none;
+  }
+  .introduce {
+    width: 100%;
+  }
+  .introduce p {
+    font-size: 1.25rem;
+    line-height: 2;
+    /* 首行缩进 */
+    text-indent: 2em;
+  }
+  .logo{
+    right: 0;
+  }
+  .news {
+    padding: 10% 5%;
+    height: auto;
+    overflow: hidden;
+  }
+  .newsName span{
+    display: none;
+  }
+  .news-boxes {
+    grid-template-columns: 1fr;
+  }
+  .moreInfo {
+    display: none;
+  }
+  .huashuo{
+    display: none;
+  }
+  .contact{
+    height: auto;
+    padding: 10% 5%;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .contact>div{
+    gap: 20px;
+  }
 }

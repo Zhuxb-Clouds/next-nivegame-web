@@ -50,6 +50,12 @@ body {
     format("woff2");
 }
 
+@font-face {
+  font-family: "Mi sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://oss.hrsrive.cn/misans/MiSans-Regular.woff2") format("woff2");
+}
 
 main{
   position: relative;

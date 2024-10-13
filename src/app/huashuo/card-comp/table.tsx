@@ -95,7 +95,7 @@ export default function Page() {
           },
         },
         token: {
-          fontFamily: "Smiley sans",
+          fontFamily: "Mi sans",
         },
       }}
     >

@@ -5,7 +5,7 @@ import "./globals.css";
 import "./post.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 type LayoutProps = {
   children: React.ReactNode;
 };
@@ -28,7 +28,8 @@ export default function Layout({ children }: LayoutProps) {
       <body>
         <Header></Header>
         <main>
-          {children}
+          <AntdRegistry>{children}</AntdRegistry>
+
           <SpeedInsights />
         </main>
         <Footer></Footer>

@@ -67,7 +67,7 @@ export default function Page() {
     const params = {
       page: currentPage.toString(),
       pageSize: pageSize.toString(),
-      pack: form.getFieldValue("pack").join(","),
+      packs: form.getFieldValue("pack").join(","),
       types: form.getFieldValue("types").join(","),
       keyword: form.getFieldValue("keyword"),
     };

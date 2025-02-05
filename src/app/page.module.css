@@ -131,6 +131,7 @@
   position: relative;
   display: flex;
   justify-content: space-around;
+  pointer-events: none;
 }
 .contact > div {
   display: flex;

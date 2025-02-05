@@ -13,7 +13,7 @@ export default function Home() {
       <div className={styles.firstScreen}>
         <div className={styles.xk}>
           <Image
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E4%BE%A0%E5%AE%A2.png"
+            src="https://oss.hrsrive.cn/%E4%BE%A0%E5%AE%A2.png"
             alt="xk"
             id="xkImage"
             width={"100%"}
@@ -30,7 +30,7 @@ export default function Home() {
             maxHeight: "calc(100vh - 134px - 86px - 320px - 53px - 60px)",
           }}>
             <Image
-              src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
+              src="https://oss.hrsrive.cn/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
               alt="gameLogo"
               width={"100%"}
               height={"100%"}
@@ -80,21 +80,21 @@ export default function Home() {
             width="400px"
             height="auto"
             alt=""
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4logo%E9%80%8F%E6%98%8E.png"
+            src="https://oss.hrsrive.cn/%E8%AF%9D%E8%AF%B4logo%E9%80%8F%E6%98%8E.png"
           ></Image>
           <Image
             preview={false}
             alt=""
             width="400px"
             height="auto"
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
+            src="https://oss.hrsrive.cn/%E8%AF%9D%E8%AF%B4%E6%A8%AA%E5%90%91logo.png"
           ></Image>
           <Image
             preview={false}
             width="400px"
             height="auto"
             alt=""
-            src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/%E5%84%BF%E5%A5%B3%E6%83%85%E9%95%BFlogo.png"
+            src="https://oss.hrsrive.cn/%E5%84%BF%E5%A5%B3%E6%83%85%E9%95%BFlogo.png"
           ></Image>
         </div>
         <Image
@@ -102,7 +102,7 @@ export default function Home() {
           className={styles.newBoxImage}
           width="50%"
           alt=""
-          src="https://zhuxb-oss.oss-cn-hangzhou.aliyuncs.com/newBox.png"
+          src="https://oss.hrsrive.cn/newBox.png"
         ></Image>
         <section>
           <p>

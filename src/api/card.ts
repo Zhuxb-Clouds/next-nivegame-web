@@ -3,7 +3,7 @@ import { queryType, optionType, cardType } from "@/type/card";
 
 
 export const getCardById = async (id: number) => {
-  return await fetch(`/api/Acard?id=${id}`);
+  return await fetch(`/api/card/${id}`);
 }
 
 export const getCard = async (query: Partial<queryType>): Promise<{ rows: cardType[], count: number }> => {

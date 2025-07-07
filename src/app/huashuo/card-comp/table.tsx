@@ -9,6 +9,26 @@ import { optionType, cardType, queryType } from "@/type/card";
 export default function Page() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  // 新增：用 state 存储是否为移动端（初始值设为 false，避免 SSR 报错）
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 新增：使用 useEffect 检测窗口大小（仅在客户端执行）
+  useEffect(() => {
+    const checkIsMobile = () => {
+      // 仅在浏览器环境执行
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    };
+    // 初始检测
+    checkIsMobile();
+    // 监听窗口大小变化（可选，根据需求决定是否需要实时响应）
+    window.addEventListener("resize", checkIsMobile);
+    // 组件卸载时移除监听
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []); // 空依赖数组：只在组件挂载时执行一次
 
   const handlePaginationChange = (page: number, pageSize?: number) => {
     setCurrentPage(page);
@@ -17,18 +37,15 @@ export default function Page() {
 
   const renderText = (text: string) => {
     if (!text) return null;
-    // 如果一句进行到结尾，则插入换行，通过句号、感叹号、问号、省略号、破折号、来判断，这里只考虑中文，句子最末尾不换行
     const sentences = text.split("\r\n");
     return (
       <>
-        {sentences.map((sentence, index) => {
-          return (
-            <div key={index}>
-              {sentence}
-              <br />
-            </div>
-          );
-        })}
+        {sentences.map((sentence, index) => (
+          <div key={index}>
+            {sentence}
+            <br />
+          </div>
+        ))}
       </>
     );
   };
@@ -38,23 +55,23 @@ export default function Page() {
       title: "卡牌正面",
       dataIndex: "front",
       render: renderText,
-      ellipsis: true, // 超出显示省略号
+      ellipsis: true,
     },
     {
       title: "卡牌背面",
       dataIndex: "back",
       render: renderText,
-      ellipsis: true, // 超出显示省略号
+      ellipsis: true,
     },
     {
       title: "卡牌类型",
       dataIndex: "type",
-      ellipsis: true, // 超出显示省略号
+      ellipsis: true,
     },
     {
       title: "从属包",
       dataIndex: "pack",
-      ellipsis: true, // 超出显示省略号
+      ellipsis: true,
     },
   ];
 
@@ -67,16 +84,11 @@ export default function Page() {
 
   useEffect(() => {
     setLoading(true);
-    Promise.all([
-      getPackOptions(),
-      getTypeOptions()
-    ]).then(([packRes, typeRes]) => {
+    Promise.all([getPackOptions(), getTypeOptions()]).then(([packRes, typeRes]) => {
       setPackOptions(packRes);
       setTypeOptions(typeRes);
       setLoading(false);
-    }).catch(() => {
-      setLoading(false);
-    });
+    }).catch(() => setLoading(false));
   }, []);
 
   const searchCard = useCallback(() => {
@@ -92,9 +104,7 @@ export default function Page() {
       setTableData(res.rows.map((item) => ({ ...item, key: item.id })));
       setTotal(res.count);
       setLoading(false);
-    }).catch(() => {
-      setLoading(false);
-    });
+    }).catch(() => setLoading(false));
   }, [currentPage, pageSize, form]);
 
   useEffect(() => {
@@ -105,9 +115,6 @@ export default function Page() {
     setCurrentPage(1);
     searchCard();
   };
-
-  // 检测是否是移动端
-  const isMobile = window.innerWidth <= 768;
 
   return (
     <ConfigProvider
@@ -131,11 +138,7 @@ export default function Page() {
             <Form
               layout={isMobile ? "vertical" : "inline"}
               form={form}
-              initialValues={{
-                types: [],
-                pack: [],
-                keyword: "",
-              }}
+              initialValues={{ types: [], pack: [], keyword: "" }}
               onValuesChange={handleConditionChange}
               className={style.searchForm}
             >
@@ -204,8 +207,8 @@ export default function Page() {
                 pageSizeOptions: ["10", "20", "50", "100"],
                 showTotal: (total) => `共 ${total} 条`,
               }}
-              scroll={{ x: 'max-content' }}
-              size={isMobile ? 'small' : 'middle'}
+              scroll={{ x: "max-content" }}
+              size={isMobile ? "small" : "middle"}
             />
           </div>
         </Spin>

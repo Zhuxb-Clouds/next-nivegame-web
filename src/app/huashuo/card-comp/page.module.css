@@ -4,16 +4,74 @@
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 40px;
-  gap: 40px;
+  padding: 16px; /* 手机端减少内边距 */
+  gap: 24px; /* 减少间距 */
   width: 100%;
+  box-sizing: border-box;
 }
 
 .filter,
-.table {
+.tableContainer {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 16px; /* 手机端减少内边距 */
+  border-radius: 12px; /* 减小圆角 */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08); /* 减弱阴影 */
   width: 100%;
+  box-sizing: border-box;
+}
+
+.searchForm {
+  width: 100%;
+}
+
+.submitBtn {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+.searchButton, .resetButton {
+  padding: 8px 16px;
+  margin-right: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.searchButton {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+}
+
+.resetButton {
+  background-color: #f0f0f0;
+  border: 1px solid #d9d9d9;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+/* 媒体查询适配不同屏幕尺寸 */
+@media (min-width: 769px) {
+  .container {
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .filter,
+  .tableContainer {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .submitBtn {
+    margin-top: 0;
+  }
+
+  .searchButton, .resetButton {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
 }

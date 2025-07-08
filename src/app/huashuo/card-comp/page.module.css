@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+.spinWrapper {
+  width: 100%;
+}
+
 .filter,
 .tableContainer {
   background-color: #fff;
@@ -31,13 +35,13 @@
   margin-top: 12px;
 }
 
-.searchButton, .resetButton {
+.searchButton,
+.resetButton {
   padding: 8px 16px;
   margin-right: 12px;
   font-size: 14px;
   border-radius: 8px;
 }
-
 
 .tableContainer {
   overflow-x: auto;
@@ -61,7 +65,8 @@
     margin-top: 0;
   }
 
-  .searchButton, .resetButton {
+  .searchButton,
+  .resetButton {
     padding: 10px 20px;
     font-size: 16px;
   }

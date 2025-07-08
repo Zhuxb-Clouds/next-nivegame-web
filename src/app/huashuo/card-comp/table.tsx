@@ -206,7 +206,7 @@ export default function Page() {
                             scroll={{ x: 'max-content' }}
                             size={isMobile ? 'small' : 'middle'}
                             style={{
-                                maxWidth: '80vw',
+                                maxWidth: '90vw',
                             }}
                         />
                     </div>

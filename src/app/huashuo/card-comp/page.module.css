@@ -1,77 +1,80 @@
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 134px);
+  gap: 40px;
+  perspective: 1000px;
+}
+
+.card {
+  height: 500px;
+  width: 300px;
+  border-radius: 20px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  padding: 16px; /* 手机端减少内边距 */
-  gap: 24px; /* 减少间距 */
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: center;
+  font-size: 80px;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 700;
+  color: #fff;
+  background-image: url(../../assets/image/back.png);
+  background-size: cover;
+  cursor: pointer;
+  line-height: 80px;
+  transition: transform 0.5s, box-shadow 0.5s;
+  position: relative;
+  overflow: hidden;
 }
 
-.filter,
-.tableContainer {
-  background-color: #fff;
-  padding: 16px; /* 手机端减少内边距 */
-  border-radius: 12px; /* 减小圆角 */
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08); /* 减弱阴影 */
-  width: 100%;
-  box-sizing: border-box;
+.cardInner {
+  position: relative;
+  z-index: 2;
 }
 
-.searchForm {
-  width: 100%;
+.card > span {
+  height: 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
 }
 
-.submitBtn {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 12px;
+/* 为每个字符添加延迟动画 */
+.card:hover > span {
+  transform: translateY(-10px);
 }
 
-.searchButton, .resetButton {
-  padding: 8px 16px;
-  margin-right: 12px;
-  font-size: 14px;
-  border-radius: 8px;
+.card:hover > span:nth-child(1) { transition-delay: 0.0s; }
+.card:hover > span:nth-child(2) { transition-delay: 0.05s; }
+.card:hover > span:nth-child(3) { transition-delay: 0.1s; }
+.card:hover > span:nth-child(4) { transition-delay: 0.15s; }
+
+.card:hover {
+  transform: scale(1.05) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.searchButton {
-  background-color: #1890ff;
-  color: white;
-  border: none;
+/* 为两个卡片添加不同的背景色调 */
+.card1 {
+  filter: hue-rotate(0deg);
 }
 
-.resetButton {
-  background-color: #f0f0f0;
-  border: 1px solid #d9d9d9;
+.card2 {
+  filter: hue-rotate(5deg);
 }
 
-.tableContainer {
-  overflow-x: auto;
+/* 添加微妙的背景动画 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-/* 媒体查询适配不同屏幕尺寸 */
-@media (min-width: 769px) {
-  .container {
-    padding: 40px;
-    gap: 40px;
-  }
+.card1 {
+  animation: float 6s ease-in-out infinite;
+}
 
-  .filter,
-  .tableContainer {
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .submitBtn {
-    margin-top: 0;
-  }
-
-  .searchButton, .resetButton {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+.card2 {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 3s; /* 错开动画时间 */
 }

@@ -20,7 +20,7 @@ export default function Page() {
           onFinish();
         })
         .catch(() => onFinish());
-    }, 500); // 500ms 防抖时间可按需调整
+    }, 1000); // 500ms 防抖时间可按需调整
   }, []);
   // 新增：使用 useEffect 检测窗口大小（仅在客户端执行）
   useEffect(() => {
@@ -120,18 +120,21 @@ export default function Page() {
       types: form.getFieldValue("types")?.join(",") || "",
       keyword: form.getFieldValue("keyword") || "",
     };
-    debouncedSearchCard(params)
-      .then((res) => {
+    debouncedSearchCard(
+      params,
+      (res: { rows: cardType[]; count: number }) => {
         setTableData(
-          res.rows.map((item) => ({
+          res.rows.map((item: cardType) => ({
             ...item,
             key: item.id,
           }))
         );
         setTotal(res.count);
+      },
+      () => {
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      }
+    );
   }, [currentPage, pageSize, form]);
 
   useEffect(() => {

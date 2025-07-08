@@ -65,18 +65,19 @@ export default function Page() {
       title: "卡牌正面",
       dataIndex: "front",
       render: renderText,
-      ellipsis: true,
+      width: isMobile ? "200px" : "300px",
     },
     {
       title: "卡牌背面",
       dataIndex: "back",
       render: renderText,
-      ellipsis: true,
+      width: isMobile ? "200px" : "300px",
     },
     {
       title: "卡牌类型",
       dataIndex: "type",
       ellipsis: true,
+      width: isMobile ? "200px" : "300px",
       render: (type: number) => {
         const typeName = typeOption.find((item) => item.value == type);
         return typeName ? typeName.label : "未知类型";
@@ -86,6 +87,7 @@ export default function Page() {
       title: "从属包",
       dataIndex: "pack",
       ellipsis: true,
+      width: isMobile ? "200px" : "300px",
       render: (pack: number) => {
         const packName = packOption.find((item) => item.value == pack);
         return packName ? packName.label : "未知包";
@@ -236,7 +238,7 @@ export default function Page() {
                 pageSizeOptions: ["10", "20", "50", "100"],
                 showTotal: (total) => `共 ${total} 条`,
               }}
-              scroll={{ x: "max-content" }}
+              scroll={{ x: "100%" }}
               size={isMobile ? "small" : "middle"}
               style={{
                 maxWidth: "90vw",

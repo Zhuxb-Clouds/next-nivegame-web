@@ -1,7 +1,7 @@
 'use client';
 import style from './page.module.css';
 import { useEffect, useState, useCallback } from 'react';
-import { Table, Select, Form, Input, Pagination, Row, Col, Spin } from 'antd';
+import { Table, Select, Form, Input, Button, Row, Col, Spin } from 'antd';
 import { ConfigProvider } from 'antd';
 import { getPackOptions, getTypeOptions, getCard } from '@/api/card';
 import { optionType, cardType, queryType } from '@/type/card';
@@ -177,12 +177,12 @@ export default function Page() {
                                 <Col xs={24}>
                                     <div className={style.submitBtn}>
                                         <Form.Item>
-                                            <button type="button" className={style.searchButton} onClick={searchCard}>
+                                            <Button type="primary" onClick={searchCard}>
                                                 搜索
-                                            </button>
-                                            <button type="button" className={style.resetButton} onClick={() => form.resetFields()}>
+                                            </Button>
+                                            <Button type="default" onClick={() => form.resetFields()}>
                                                 重置
-                                            </button>
+                                            </Button>
                                         </Form.Item>
                                     </div>
                                 </Col>

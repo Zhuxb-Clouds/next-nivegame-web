@@ -19,7 +19,7 @@
   background-color: #fff;
   padding: 16px; /* 手机端减少内边距 */
   border-radius: 8px; /* 减小圆角 */
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.02); /* 减弱阴影 */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08); /* 减弱阴影 */
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 20px;

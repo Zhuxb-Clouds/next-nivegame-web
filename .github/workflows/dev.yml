@@ -6,8 +6,6 @@ on:
 jobs:
   deploy_ghpages:
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_BASE_URL: 'https://nivegame.huashuocard.cn'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -16,6 +14,8 @@ jobs:
       - run: npm install -g yarn@1.22.22
 
       - name: yarn install and build
+        env:
+          NEXT_PUBLIC_BASE_URL: 'https://nivegame.huashuocard.cn'
         run: |
           yarn
           yarn build

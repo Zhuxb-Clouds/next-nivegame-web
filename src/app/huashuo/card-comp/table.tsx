@@ -6,8 +6,7 @@ import { ConfigProvider } from "antd";
 import { getPackOptions, getTypeOptions, getCard } from "@/api/card";
 import { optionType, cardType, queryType } from "@/type/card";
 import { debounce } from "lodash";
-import { ColumnsType } from "antd/es/table";
-
+export type AlignType = "start" | "end" | "left" | "right" | "center" | "justify" | "match-parent";
 export default function Page() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -61,7 +60,7 @@ export default function Page() {
     );
   };
 
-  const columns: ColumnsType<cardType> = [
+  const columns = [
     {
       title: "卡牌正面",
       dataIndex: "front",
@@ -79,7 +78,7 @@ export default function Page() {
       dataIndex: "type",
       ellipsis: true,
       width: isMobile ? "200px" : "300px",
-      align: "center",
+      align: "center" as AlignType,
       render: (type: number) => {
         const typeName = typeOption.find((item) => item.value == type);
         return typeName ? typeName.label : "未知类型";
@@ -90,7 +89,7 @@ export default function Page() {
       dataIndex: "pack",
       ellipsis: true,
       width: isMobile ? "200px" : "300px",
-      align: "center",
+      align: "center" as AlignType,
       render: (pack: number) => {
         const packName = packOption.find((item) => item.value == pack);
         return packName ? packName.label : "未知包";

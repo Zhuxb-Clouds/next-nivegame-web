@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap");
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 :root {
   --bg-color: #fff;
   --color: #000;
@@ -13,29 +14,37 @@
   --code-after-color: #efef17;
   --blockquote-bar-color: #1e1e1e;
   --blockquote-background-color: #f1f1f1;
+  --frame-outer-width: 4px;
+  --frame-inner-width: 2px;
+
+  /* Spacing scale */
+  --header-height: 90px;
+  --section-px: clamp(32px, 9vw, 160px);
+  --section-py: clamp(80px, 10vw, 128px);
+  --content-max-width: 1280px;
+
+  /* Color tokens */
+  --text-primary: #111;
+  --text-secondary: #444;
+  --text-muted: #777;
+  --border-light: #eaeaea;
+  --surface-alt: #fafafa;
 }
 
-/* 深色模式 */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --bg-color: #1c1a16;
-    --color: rgb(220, 220, 220);
-    --selection-bg: #d3d3d3;
-    --selection-color: #242424;
-    --code-after-color: #1717ef;
-    --blockquote-bar-color: #ebebeb;
-    --blockquote-background-color: #313131;
-  }
-} */
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-  scroll-behavior:smooth
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
+  color: var(--text-primary);
 }
+
 /* 选中文字的背景色 */
 ::selection {
   background-color: #3b3b3b;
@@ -43,11 +52,12 @@ body {
 }
 
 @font-face {
-  font-family: 'Smiley sans';
+  font-family: "Smiley sans";
   font-style: normal;
   font-weight: 400;
   src: url("https://oss.hrsrive.cn/SmileySans-Oblique.ttf.woff2")
     format("woff2");
+  font-display: swap;
 }
 
 @font-face {
@@ -55,21 +65,27 @@ body {
   font-style: normal;
   font-weight: 400;
   src: url("https://oss.hrsrive.cn/misans/MiSans-Regular.woff2") format("woff2");
+  font-display: swap;
 }
 
-main{
+main {
   position: relative;
-  margin-block: 134px 0;
-  padding: 0 60px;
-  /* 居中 */
+  padding-top: var(--header-height);
   display: flex;
   justify-content: center;
   overflow: hidden;
+  min-height: 100vh;
 }
 
-@media screen and (max-width: 768px){
-  main{
-    padding: 0 20px;
+@media screen and (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+    --section-px: 6%;
+  }
+
+  main {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -79,16 +95,31 @@ a {
   color: inherit;
 }
 
-footer{
+/* ===== Footer ===== */
+footer {
   width: 100%;
-  height: 134px;
-  background-color: #000;
+  padding: 48px var(--section-px);
+  background-color: #0a0a0a;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
-  font-family: 'Noto Serif SC', serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
+}
+
+footer p {
+  letter-spacing: 0.08em;
+  color: #999;
+}
+
+footer a {
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #bbb;
 }

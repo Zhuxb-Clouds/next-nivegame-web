@@ -18,7 +18,7 @@
 
 .title {
   font-size: 1.5rem;
-  font-family: "Noto Serif SC", serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
   font-weight: 600;
   color: #1e293b;
   margin: 0 0 0.25rem 0;
@@ -29,7 +29,7 @@
   font-size: 0.75rem;
   color: #64748b;
   margin: 0;
-  font-family: "Noto Serif SC", serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -143,7 +143,7 @@
 /* 工具标题 */
 .toolTitle {
   font-size: 4rem;
-  font-family: "Noto Serif SC", serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
   font-weight: 700;
   color: #1e293b;
   line-height: 1;
@@ -163,7 +163,7 @@
 .toolDescription {
   font-size: 0.875rem;
   color: #64748b;
-  font-family: "Noto Serif SC", serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
   font-weight: 400;
   margin-top: 1.5rem;
   opacity: 0;
@@ -185,7 +185,7 @@
   right: 2rem;
   font-size: 0.75rem;
   color: #94a3b8;
-  font-family: "Noto Serif SC", serif;
+  font-family: "Smiley sans", "Mi sans", sans-serif;
   font-weight: 500;
   letter-spacing: 0.1em;
   opacity: 0;

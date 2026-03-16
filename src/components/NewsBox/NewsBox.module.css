@@ -1,19 +1,26 @@
 .news-box {
+  --news-box-radius: 16px;
   position: relative;
   height: 300px;
-  border: #000 2px solid;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--news-box-radius);
   padding: 20px 40px;
-  font-family: "Smiley sans";
+  font-family: inherit;
   background-color: #fff;
   cursor: pointer;
-  box-shadow: 0px 0px #00000000;
-  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transform: translate(0, 0);
+}
+.news-box::before {
+  display: none;
 }
 .news-box:hover {
-  box-shadow: 5px 5px #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
 }
 
 .news-title {

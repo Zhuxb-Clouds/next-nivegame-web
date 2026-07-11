@@ -6,6 +6,7 @@ on:
 jobs:
   deploy_ghpages:
     runs-on: ubuntu-latest
+    environment: AliServer
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -21,21 +22,24 @@ jobs:
           yarn build
 
       - name: prepare remote dir
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.MY_HOST }} # 服务器IP（需要在GitHub上自行配置对应的secret）
           username: ${{ secrets.MY_USER }} # 服务器用户名
           password: ${{ secrets.MY_PASS }} # 服务器密码
+          port: 22
           script: |
             rm -rf /var/www/nivegame-web
             mkdir -p /var/www/nivegame-web
 
       - name: deploy
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.MY_HOST }}
           username: ${{ secrets.MY_USER }}
           password: ${{ secrets.MY_PASS }}
+          port: 22
           source: 'out/*'
           target: /var/www/nivegame-web
+          rm: true
           strip_components: 1

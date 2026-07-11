@@ -20,15 +20,22 @@ jobs:
           yarn
           yarn build
 
-      - name: deploy
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      - name: prepare remote dir
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.MY_HOST }} # 服务器IP（需要在GitHub上自行配置对应的secret）
-          user: ${{ secrets.MY_USER }} # 服务器用户名
-          pass: ${{ secrets.MY_PASS }} # 服务器密码
-          connect_timeout: 10s
-          first_ssh: | # 目标路径（服务器）
+          username: ${{ secrets.MY_USER }} # 服务器用户名
+          password: ${{ secrets.MY_PASS }} # 服务器密码
+          script: |
             rm -rf /var/www/nivegame-web
             mkdir -p /var/www/nivegame-web
-          scp: |
-            './out/*' => /var/www/nivegame-web
+
+      - name: deploy
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.MY_HOST }}
+          username: ${{ secrets.MY_USER }}
+          password: ${{ secrets.MY_PASS }}
+          source: 'out/*'
+          target: /var/www/nivegame-web
+          strip_components: 1

@@ -5,9 +5,9 @@ import Logo from "@/assets/image/飞雪logo.png";
 
 function Header() {
   const subLink = [
-    { title: "最新动态", enTitle: "news", id: "/#news" },
     { title: "桌游话说", enTitle: "HuaShuo", id: "/#HuaShuo" },
-    { title: "关于我们", enTitle: "About us", id: "/#about" },
+    { title: "玩家专区", enTitle: "For Players", id: "/huashuo" },
+    { title: "关于我们", enTitle: "About us", id: "/about" },
   ];
   return (
     <header className={styles.header}>

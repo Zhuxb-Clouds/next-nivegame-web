@@ -1,0 +1,125 @@
+.wrapper {
+  font-family: "Noto Serif SC";
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
+  color: #1a1a1a;
+}
+.back {
+  display: inline-block;
+  font-size: 15px;
+  color: #888;
+  transition: color 0.2s ease;
+}
+.back:hover {
+  color: #1a1a1a;
+}
+.header {
+  padding: 32px 0 28px;
+  border-bottom: 2px solid #1a1a1a;
+  margin-bottom: 40px;
+}
+.pack {
+  display: inline-block;
+  font-size: 13px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+.title {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+/* 规则正文：参考文档式，左对齐清晰 */
+.content {
+  font-size: 16.5px;
+  line-height: 2;
+  color: #2a2a2a;
+}
+.content :global(h1),
+.content :global(h2) {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  color: #1a1a1a;
+}
+.content :global(h3) {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 28px 0 12px;
+  color: #1a1a1a;
+}
+.content :global(h4) {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: #444;
+}
+.content :global(p) {
+  margin-bottom: 16px;
+}
+.content :global(ul),
+.content :global(ol) {
+  margin: 0 0 16px;
+  padding-left: 1.6em;
+}
+.content :global(li) {
+  margin-bottom: 8px;
+}
+.content :global(strong) {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.content :global(hr) {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 32px 0;
+}
+.content :global(blockquote) {
+  margin: 20px 0;
+  padding: 12px 20px;
+  background: #f7f7f7;
+  border-left: 3px solid #1a1a1a;
+  border-radius: 0 8px 8px 0;
+  color: #444;
+}
+.content :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+.content :global(th),
+.content :global(td) {
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  text-align: left;
+}
+.content :global(th) {
+  background: #f5f5f5;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 32px 20px 80px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .content {
+    font-size: 16px;
+    line-height: 1.95;
+  }
+  .content :global(h1),
+  .content :global(h2) {
+    font-size: 21px;
+  }
+}

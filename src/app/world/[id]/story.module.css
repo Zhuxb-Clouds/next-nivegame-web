@@ -1,0 +1,110 @@
+.wrapper {
+  font-family: "Noto Serif SC";
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
+  color: #1a1a1a;
+}
+.back,
+.backBottom {
+  display: inline-block;
+  font-size: 15px;
+  color: #888;
+  transition: color 0.2s ease;
+}
+.back:hover,
+.backBottom:hover {
+  color: #1a1a1a;
+}
+.backBottom {
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+/* 标题区 */
+.header {
+  text-align: center;
+  padding: 40px 0 48px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 48px;
+}
+.theme {
+  display: inline-block;
+  font-size: 13px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+/* 正文排版 */
+.content {
+  font-size: 18px;
+  line-height: 2.3;
+  color: #2a2a2a;
+}
+.content :global(h2) {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin: 56px 0 28px;
+  color: #1a1a1a;
+}
+.content :global(h3) {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #666;
+  margin: 40px 0 24px;
+}
+.content :global(p) {
+  margin-bottom: 24px;
+  text-indent: 2em;
+}
+.content :global(hr) {
+  border: none;
+  text-align: center;
+  margin: 40px 0;
+}
+.content :global(hr)::before {
+  content: "· · ·";
+  color: #bbb;
+  letter-spacing: 0.5em;
+  font-size: 20px;
+}
+.content :global(strong) {
+  font-weight: 700;
+}
+.content :global(blockquote) {
+  margin: 32px 0;
+  padding-left: 20px;
+  border-left: 3px solid #ddd;
+  color: #555;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 32px 20px 80px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .content {
+    font-size: 17px;
+    line-height: 2.1;
+  }
+  .content :global(h2) {
+    font-size: 22px;
+    margin: 40px 0 20px;
+  }
+}

@@ -1,17 +1,17 @@
 "use client";
 import style from "./page.module.css";
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { Table, Select, Form, Input, Button, Row, Col, Spin } from "antd";
+import { Select, Form, Input, Button, Row, Col, Spin, Pagination } from "antd";
 import { ConfigProvider } from "antd";
 import { getPackOptions, getTypeOptions, getCard } from "@/api/card";
-import { optionType, cardType, queryType } from "@/type/card";
+import { optionType, cardType } from "@/type/card";
 import { debounce } from "lodash";
-export type AlignType = "start" | "end" | "left" | "right" | "center" | "justify" | "match-parent";
+
 export default function Page() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  // 新增：用 state 存储是否为移动端（初始值设为 false，避免 SSR 报错）
   const [isMobile, setIsMobile] = useState(false);
+
   const debouncedSearchCard = useMemo(() => {
     return debounce((params, onSuccess, onFinish) => {
       getCard(params)
@@ -20,29 +20,30 @@ export default function Page() {
           onFinish();
         })
         .catch(() => onFinish());
-    }, 1000); // 500ms 防抖时间可按需调整
+    }, 1000);
   }, []);
-  // 新增：使用 useEffect 检测窗口大小（仅在客户端执行）
+
   useEffect(() => {
     const checkIsMobile = () => {
-      // 仅在浏览器环境执行
       if (typeof window !== "undefined") {
         setIsMobile(window.innerWidth <= 768);
       }
     };
-    // 初始检测
     checkIsMobile();
-    // 监听窗口大小变化（可选，根据需求决定是否需要实时响应）
     window.addEventListener("resize", checkIsMobile);
-    // 组件卸载时移除监听
-    return () => {
-      window.removeEventListener("resize", checkIsMobile);
-    };
-  }, []); // 空依赖数组：只在组件挂载时执行一次
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
-  const handlePaginationChange = (page: number, pageSize?: number) => {
+  const [packOption, setPackOptions] = useState<optionType[]>([]);
+  const [typeOption, setTypeOptions] = useState<optionType[]>([]);
+  const [tableData, setTableData] = useState<cardType[]>([]);
+  const [total, setTotal] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(24);
+
+  const handlePaginationChange = (page: number, size?: number) => {
     setCurrentPage(page);
-    setPageSize(pageSize || 20);
+    setPageSize(size || 24);
   };
 
   const renderText = (text: string) => {
@@ -51,58 +52,18 @@ export default function Page() {
     return (
       <>
         {sentences.map((sentence, index) => (
-          <div key={index}>
+          <p key={index} className={style.line}>
             {sentence}
-            <br />
-          </div>
+          </p>
         ))}
       </>
     );
   };
 
-  const columns = [
-    {
-      title: "卡牌正面",
-      dataIndex: "front",
-      render: renderText,
-      minWidth: 300,
-    },
-    {
-      title: "卡牌背面",
-      dataIndex: "back",
-      render: renderText,
-      minWidth: 300,
-    },
-    {
-      title: "卡牌类型",
-      dataIndex: "type",
-      ellipsis: true,
-      width: isMobile ? "200px" : "300px",
-      align: "center" as AlignType,
-      render: (type: number) => {
-        const typeName = typeOption.find((item) => item.value == type);
-        return typeName ? typeName.label : "未知类型";
-      },
-    },
-    {
-      title: "从属包",
-      dataIndex: "pack",
-      ellipsis: true,
-      width: isMobile ? "200px" : "300px",
-      align: "center" as AlignType,
-      render: (pack: number) => {
-        const packName = packOption.find((item) => item.value == pack);
-        return packName ? packName.label : "未知包";
-      },
-    },
-  ];
-
-  const [packOption, setPackOptions] = useState<optionType[]>([]);
-  const [typeOption, setTypeOptions] = useState<optionType[]>([]);
-  const [tableData, setTableData] = useState<cardType[]>([]);
-  const [total, setTotal] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(20);
+  const getTypeName = (type: number) =>
+    typeOption.find((item) => item.value == type)?.label || "未知类型";
+  const getPackName = (pack: number) =>
+    packOption.find((item) => item.value == pack)?.label || "未知包";
 
   useEffect(() => {
     setLoading(true);
@@ -127,19 +88,12 @@ export default function Page() {
     debouncedSearchCard(
       params,
       (res: { rows: cardType[]; count: number }) => {
-        setTableData(
-          res.rows.map((item: cardType) => ({
-            ...item,
-            key: item.id,
-          }))
-        );
+        setTableData(res.rows.map((item) => ({ ...item, key: item.id })));
         setTotal(res.count);
       },
-      () => {
-        setLoading(false);
-      }
+      () => setLoading(false)
     );
-  }, [currentPage, pageSize, form]);
+  }, [currentPage, pageSize, form, debouncedSearchCard]);
 
   useEffect(() => {
     searchCard();
@@ -153,101 +107,109 @@ export default function Page() {
   return (
     <ConfigProvider
       theme={{
-        components: {
-          Form: {
-            labelFontSize: isMobile ? 14 : 16,
-          },
-          Table: {
-            cellFontSize: isMobile ? 14 : 16,
-          },
-        },
         token: {
-          fontFamily: "Mi sans",
-          fontSize: isMobile ? 14 : 16,
+          colorPrimary: "#1a1a1a",
+          borderRadius: 10,
+          fontFamily: '"Noto Serif SC", serif',
+          fontSize: isMobile ? 14 : 15,
+          controlHeight: 40,
         },
       }}
     >
       <div className={style.container}>
-        <Spin spinning={loading} wrapperClassName={style.spinWrapper}>
-          <div className={style.filter}>
-            <Form
-              layout={isMobile ? "vertical" : "inline"}
-              form={form}
-              initialValues={{ types: [], pack: [], keyword: "" }}
-              onValuesChange={handleConditionChange}
-              className={style.searchForm}
-              colon
-            >
-              <Row gutter={[16, 16]} justify="start">
-                <Col xs={24} sm={12} md={8}>
-                  <Form.Item label="卡牌类型" name="types">
-                    <Select
-                      mode="multiple"
-                      allowClear
-                      style={{ width: "100%" }}
-                      placeholder="请选择卡牌类型"
-                      options={typeOption}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12} md={8}>
-                  <Form.Item label="从属包" name="pack">
-                    <Select
-                      mode="multiple"
-                      allowClear
-                      style={{ width: "100%" }}
-                      placeholder="请选择从属包"
-                      options={packOption}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12} md={8}>
-                  <Form.Item label="关键词" name="keyword">
-                    <Input placeholder="请输入关键词" style={{ width: "100%" }} />
-                  </Form.Item>
-                </Col>
-                <Col xs={24}>
-                  <div className={style.submitBtn}>
-                    <Form.Item>
-                      <Button
-                        type="primary"
-                        onClick={searchCard}
-                        htmlType="submit"
-                        style={{ marginRight: 8 }}
-                      >
-                        搜索
-                      </Button>
-                      <Button type="default" onClick={() => form.resetFields()}>
-                        重置
-                      </Button>
-                    </Form.Item>
-                  </div>
-                </Col>
-              </Row>
-            </Form>
+        <header className={style.header}>
+          <div className={style.headTitle}>
+            <h1>卡牌查询</h1>
+            <span>Cards</span>
           </div>
+          <a className={style.back} href="/huashuo">
+            ← 返回玩家专区
+          </a>
+        </header>
 
-          <div className={style.tableContainer}>
-            <Table
-              columns={columns}
-              tableLayout="auto"
-              dataSource={tableData}
-              pagination={{
-                current: currentPage,
-                pageSize: pageSize,
-                total: total,
-                onChange: handlePaginationChange,
-                showSizeChanger: !isMobile,
-                pageSizeOptions: ["10", "20", "50", "100"],
-                showTotal: (total) => `共 ${total} 条`,
-              }}
-              scroll={{ x: "100%" }}
-              size={isMobile ? "small" : "middle"}
-              style={{
-                maxWidth: "90vw",
-              }}
-            />
-          </div>
+        <div className={style.filter}>
+          <Form
+            layout={isMobile ? "vertical" : "vertical"}
+            form={form}
+            initialValues={{ types: [], pack: [], keyword: "" }}
+            onValuesChange={handleConditionChange}
+            className={style.searchForm}
+          >
+            <Row gutter={[16, 8]} align="bottom">
+              <Col xs={24} sm={12} md={7}>
+                <Form.Item label="卡牌类型" name="types">
+                  <Select
+                    mode="multiple"
+                    allowClear
+                    style={{ width: "100%" }}
+                    placeholder="全部类型"
+                    options={typeOption}
+                  />
+                </Form.Item>
+              </Col>
+              <Col xs={24} sm={12} md={7}>
+                <Form.Item label="从属包" name="pack">
+                  <Select
+                    mode="multiple"
+                    allowClear
+                    style={{ width: "100%" }}
+                    placeholder="全部包"
+                    options={packOption}
+                  />
+                </Form.Item>
+              </Col>
+              <Col xs={24} sm={12} md={6}>
+                <Form.Item label="关键词" name="keyword">
+                  <Input allowClear placeholder="搜索卡面文字" />
+                </Form.Item>
+              </Col>
+              <Col xs={24} sm={12} md={4}>
+                <Form.Item label={isMobile ? " " : " "} className={style.btnItem}>
+                  <Button block type="primary" onClick={searchCard}>
+                    搜索
+                  </Button>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+        </div>
+
+        <Spin spinning={loading}>
+          {tableData.length === 0 && !loading ? (
+            <div className={style.empty}>没有找到符合条件的卡牌</div>
+          ) : (
+            <div className={style.cardGrid}>
+              {tableData.map((card) => (
+                <div className={style.card} key={card.id}>
+                  <div className={style.cardTags}>
+                    <span className={style.typeTag}>{getTypeName(card.type)}</span>
+                    <span className={style.packTag}>{getPackName(card.pack)}</span>
+                  </div>
+                  <div className={style.cardFront}>{renderText(card.front)}</div>
+                  {card.back && (
+                    <div className={style.cardBack}>
+                      <div className={style.cardBackLabel}>背面</div>
+                      {renderText(card.back)}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {total > 0 && (
+            <div className={style.pagination}>
+              <Pagination
+                current={currentPage}
+                pageSize={pageSize}
+                total={total}
+                onChange={handlePaginationChange}
+                showSizeChanger={!isMobile}
+                pageSizeOptions={["12", "24", "48"]}
+                showTotal={(t) => `共 ${t} 张`}
+              />
+            </div>
+          )}
         </Spin>
       </div>
     </ConfigProvider>

@@ -1,0 +1,95 @@
+.footer {
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  color: #fff;
+  font-family: "Noto Serif SC", serif;
+  padding: 56px 8% 28px;
+  display: block;
+}
+.top {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.brand {
+  max-width: 320px;
+}
+.brandName {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+.slogan {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #bbb;
+  letter-spacing: 0.15em;
+}
+.cols {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.col h4 {
+  font-size: 14px;
+  color: #888;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.col a {
+  display: block;
+  font-size: 15px;
+  color: #eee;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+.col a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.col a span {
+  color: #777;
+  font-size: 12px;
+  margin-left: 8px;
+}
+.bottom {
+  max-width: 1080px;
+  margin: 24px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  color: #888;
+}
+.bottom a {
+  color: #888;
+  transition: color 0.2s ease;
+}
+.bottom a:hover {
+  color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 40px 6% 24px;
+  }
+  .top {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .cols {
+    gap: 48px;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

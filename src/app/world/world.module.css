@@ -1,0 +1,102 @@
+.page {
+  font-family: "Noto Serif SC";
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+  color: #1a1a1a;
+}
+
+/* Hero */
+.hero {
+  padding: 40px 0 56px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 48px;
+}
+.heroTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.heroTitle h1 {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+.heroTitle span {
+  font-size: 16px;
+  color: #999;
+  letter-spacing: 0.1em;
+}
+.heroLede {
+  max-width: 760px;
+  font-size: 1.15rem;
+  line-height: 2.2;
+  color: #555;
+}
+
+/* 短篇列表 */
+.storyList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.storyCard {
+  display: block;
+  padding: 32px 28px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fafafa;
+  color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.storyCard:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transform: translateY(-3px);
+}
+.storyTheme {
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+}
+.storyTitle {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+.storySummary {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #666;
+  margin-bottom: 20px;
+}
+.storyMore {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .page {
+    padding: 40px 18px 80px;
+  }
+  .heroTitle h1 {
+    font-size: 30px;
+  }
+  .heroLede {
+    font-size: 1.05rem;
+    line-height: 2.1;
+  }
+  .storyList {
+    grid-template-columns: 1fr;
+  }
+  .storyTitle {
+    font-size: 26px;
+  }
+}

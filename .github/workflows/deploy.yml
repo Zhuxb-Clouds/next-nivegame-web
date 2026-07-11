@@ -6,7 +6,7 @@ on:
 jobs:
   deploy_ghpages:
     runs-on: ubuntu-latest
-    environment: AliServer
+    environment: Production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -16,7 +16,7 @@ jobs:
 
       - name: yarn install and build
         env:
-          NEXT_PUBLIC_BASE_URL: 'https://nivegame.huashuocard.cn'
+          NEXT_PUBLIC_BASE_URL: "https://nivegame.huashuocard.cn"
         run: |
           yarn
           yarn build
@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.MY_USER }}
           password: ${{ secrets.MY_PASS }}
           port: 22
-          source: 'out/*'
+          source: "out/*"
           target: /var/www/nivegame-web
           rm: true
           strip_components: 1

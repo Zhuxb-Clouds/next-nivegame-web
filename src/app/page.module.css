@@ -59,12 +59,13 @@
   background-color: #1a1a1a;
   color: #fff;
   border: none;
-  font-family: "Noto Serif SC";
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "SimHei",
+    sans-serif;
   font-size: 19px;
   font-weight: 700;
   margin-block: 30px;
   border-radius: 50px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -86,10 +87,11 @@
   padding: 12px 40px;
   background-color: transparent;
   color: #1a1a1a;
-  font-family: "Noto Serif SC";
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "SimHei",
+    sans-serif;
   font-size: 18px;
   border-radius: 50px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   display: inline-flex;
   justify-content: center;
   align-items: center;

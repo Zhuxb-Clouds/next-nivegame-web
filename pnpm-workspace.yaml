@@ -1,0 +1,3 @@
+allowBuilds:
+  '@vercel/speed-insights': true
+  unrs-resolver: true

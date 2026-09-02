@@ -7,6 +7,9 @@ export const links = {
   // 淘宝已下架，暂时停用（恢复时取消相关注释即可）
   taobao: "https://item.taobao.com/item.htm?abbucket=13&id=750584104149",
 
+  // 小红书店铺：《话说！》Allin 版本
+  huashuoAllin: "https://xhslink.com/m/AvPNgchN68J",
+
   // 社媒 / 内容（主要引流渠道）
   xiaohongshu:
     "https://www.xiaohongshu.com/user/profile/692c5b2a0000000037029927",

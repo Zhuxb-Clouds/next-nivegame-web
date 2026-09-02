@@ -124,6 +124,14 @@ export default function Home() {
             */}
             <a
               className={styles.btn}
+              href={links.huashuoAllin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              购买《话说！》Allin版
+            </a>
+            <a
+              className={styles.btnGhost}
               href={links.xiaohongshu}
               target="_blank"
               rel="noopener noreferrer"

@@ -40,6 +40,11 @@ export default function Page() {
   const [total, setTotal] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(24);
+  // 双面卡（人物牌/箴言牌）的翻面状态：cardId -> 是否显示背面
+  const [flipped, setFlipped] = useState<Record<number, boolean>>({});
+
+  const isFlippable = (card: cardType) =>
+    (card.type === 5 || card.type === 6) && !!card.back_image;
 
   const handlePaginationChange = (page: number, size?: number) => {
     setCurrentPage(page);
@@ -185,6 +190,33 @@ export default function Page() {
                     <span className={style.typeTag}>{getTypeName(card.type)}</span>
                     <span className={style.packTag}>{getPackName(card.pack)}</span>
                   </div>
+                  {card.front_image && (
+                    <div
+                      className={style.cardFace}
+                      style={{ cursor: isFlippable(card) ? "pointer" : "default" }}
+                      title={
+                        isFlippable(card)
+                          ? flipped[card.id]
+                            ? "点击查看正面"
+                            : "点击查看背面"
+                          : undefined
+                      }
+                      onClick={
+                        isFlippable(card)
+                          ? () => setFlipped((s) => ({ ...s, [card.id]: !s[card.id] }))
+                          : undefined
+                      }
+                    >
+                      <img
+                        src={(flipped[card.id] ? card.back_image : card.front_image) || undefined}
+                        alt={card.front}
+                        loading="lazy"
+                      />
+                      {isFlippable(card) && (
+                        <span className={style.faceBadge}>{flipped[card.id] ? "背面" : "正面"}</span>
+                      )}
+                    </div>
+                  )}
                   <div className={style.cardFront}>{renderText(card.front)}</div>
                   {card.back && (
                     <div className={style.cardBack}>

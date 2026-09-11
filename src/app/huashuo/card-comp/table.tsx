@@ -51,20 +51,6 @@ export default function Page() {
     setPageSize(size || 24);
   };
 
-  const renderText = (text: string) => {
-    if (!text) return null;
-    const sentences = text.split("\r\n");
-    return (
-      <>
-        {sentences.map((sentence, index) => (
-          <p key={index} className={style.line}>
-            {sentence}
-          </p>
-        ))}
-      </>
-    );
-  };
-
   const getTypeName = (type: number) =>
     typeOption.find((item) => item.value == type)?.label || "未知类型";
   const getPackName = (pack: number) =>
@@ -209,19 +195,12 @@ export default function Page() {
                     >
                       <img
                         src={(flipped[card.id] ? card.back_image : card.front_image) || undefined}
-                        alt={card.front}
+                        alt={flipped[card.id] ? card.back || card.front : card.front}
                         loading="lazy"
                       />
                       {isFlippable(card) && (
                         <span className={style.faceBadge}>{flipped[card.id] ? "背面" : "正面"}</span>
                       )}
-                    </div>
-                  )}
-                  <div className={style.cardFront}>{renderText(card.front)}</div>
-                  {card.back && (
-                    <div className={style.cardBack}>
-                      <div className={style.cardBackLabel}>背面</div>
-                      {renderText(card.back)}
                     </div>
                   )}
                 </div>

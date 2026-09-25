@@ -9,7 +9,8 @@ import { debounce } from "lodash";
 
 export default function Page() {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
+  // 首屏即有搜索在途，初始为 true，避免挂载首帧先画出空态
+  const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   const debouncedSearchCard = useMemo(() => {
@@ -57,14 +58,14 @@ export default function Page() {
     packOption.find((item) => item.value == pack)?.label || "未知包";
 
   useEffect(() => {
-    setLoading(true);
+    // 选项加载不接管 loading：它先于卡牌请求返回时若关闭 loading，
+    // 空态会在列表回来前闪出；loading 的开关统一由 searchCard 负责
     Promise.all([getPackOptions(), getTypeOptions()])
       .then(([packRes, typeRes]) => {
         setPackOptions(packRes);
         setTypeOptions(typeRes);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const searchCard = useCallback(() => {

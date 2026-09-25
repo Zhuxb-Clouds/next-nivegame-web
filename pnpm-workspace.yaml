@@ -1,3 +1,21 @@
 allowBuilds:
   '@vercel/speed-insights': true
   unrs-resolver: true
+
+# 依赖安全修复：将带漏洞的传递依赖钉到补丁版本（同大版本内）
+overrides:
+  'brace-expansion@1': ^1.1.17
+  'brace-expansion@2': ^2.1.4
+  'js-yaml@3': ^3.15.2
+  'js-yaml@4': ^4.3.0
+  'minimatch@3': ^3.1.4
+  'minimatch@9': ^9.0.7
+  'picomatch@2': ^2.3.2
+  'picomatch@4': ^4.0.4
+  'postcss@8': ^8.5.23
+  lodash: ^4.18.1
+  'nanoid@3': ^3.3.18
+  flatted: ^3.4.2
+  'glob@10': ^10.5.0
+  'ajv@6': ^6.14.0
+  'fflate@0.6': ^0.6.11

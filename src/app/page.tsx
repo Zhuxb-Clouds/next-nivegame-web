@@ -112,7 +112,7 @@ export default function Home() {
           </p>
 
           <div className={styles.ctaRow}>
-            {/* 淘宝已下架，暂时注释（恢复时取消注释）
+            {/* 与「购买《话说！》Allin版」按钮指向同一链接，暂不重复展示
             <a
               className={styles.btn}
               href={links.taobao}
@@ -124,7 +124,7 @@ export default function Home() {
             */}
             <a
               className={styles.btn}
-              href={links.huashuoAllin}
+              href={links.taobao}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -213,8 +213,7 @@ export default function Home() {
           >
             去小红书看看
           </a>
-          {/* 淘宝已下架，暂时注释（恢复时取消注释）
-          <p>本体必备，扩展任选 —— 不知道买哪个？淘宝有全套与单件多档可选。</p>
+          <p>本体必备，扩展任选 —— 不知道买哪个？淘宝有全套与单件多档可选，还有惊堂木等周边。</p>
           <a
             className={styles.btn}
             href={links.taobao}
@@ -223,7 +222,6 @@ export default function Home() {
           >
             去淘宝看看
           </a>
-          */}
         </div>
       </div>
       <div className={styles.reviews}>

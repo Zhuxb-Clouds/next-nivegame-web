@@ -4,11 +4,8 @@
 
 export const links = {
   // 电商 / 成交
-  // 淘宝已下架，暂时停用（恢复时取消相关注释即可）
-  taobao: "https://item.taobao.com/item.htm?abbucket=13&id=750584104149",
-
-  // 小红书店铺：《话说！》Allin 版本
-  huashuoAllin: "https://xhslink.com/m/AvPNgchN68J",
+  // 淘宝：《话说！》Allin 版本（skuId 预选对应规格）
+  taobao: "https://item.taobao.com/item.htm?id=1086864529816&skuId=6305430554187",
 
   // 社媒 / 内容（主要引流渠道）
   xiaohongshu:
@@ -22,8 +19,7 @@ export const channels: Array<{
   label: string;
   desc: string;
 }> = [
-  // 淘宝已下架，暂时从展示渠道移除
-  // { key: "taobao", label: "淘宝", desc: "想买 → 这里" },
+  { key: "taobao", label: "淘宝", desc: "想买 → 这里" },
   { key: "xiaohongshu", label: "小红书", desc: "追更 · 种草" },
   { key: "bilibili", label: "B站", desc: "教程 · 实况" },
 ];

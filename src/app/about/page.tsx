@@ -165,11 +165,9 @@ export default function AboutPage() {
           <div className={styles.channelBox}>
             <p>也可以在这些地方找到《话说！》：</p>
             <div className={styles.channelLinks}>
-              {/* 淘宝已下架，暂时注释（恢复时取消注释）
               <a href={links.taobao} target="_blank" rel="noopener noreferrer">
                 淘宝店铺
               </a>
-              */}
               <a href={links.xiaohongshu} target="_blank" rel="noopener noreferrer">
                 小红书
               </a>

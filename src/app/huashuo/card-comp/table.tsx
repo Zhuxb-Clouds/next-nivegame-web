@@ -170,41 +170,51 @@ export default function Page() {
             <div className={style.empty}>没有找到符合条件的卡牌</div>
           ) : (
             <div className={style.cardGrid}>
-              {tableData.map((card) => (
+              {tableData.map((card) => {
+                // 无图卡用文字回退：此时翻面看的是背面文字而不是背面图
+                const flippable = card.front_image
+                  ? isFlippable(card)
+                  : (card.type === 5 || card.type === 6) && !!card.back;
+                return (
                 <div className={style.card} key={card.id}>
                   <div className={style.cardTags}>
                     <span className={style.typeTag}>{getTypeName(card.type)}</span>
                     <span className={style.packTag}>{getPackName(card.pack)}</span>
                   </div>
-                  {card.front_image && (
-                    <div
-                      className={style.cardFace}
-                      style={{ cursor: isFlippable(card) ? "pointer" : "default" }}
-                      title={
-                        isFlippable(card)
-                          ? flipped[card.id]
-                            ? "点击查看正面"
-                            : "点击查看背面"
-                          : undefined
-                      }
-                      onClick={
-                        isFlippable(card)
-                          ? () => setFlipped((s) => ({ ...s, [card.id]: !s[card.id] }))
-                          : undefined
-                      }
-                    >
+                  <div
+                    className={style.cardFace}
+                    style={{ cursor: flippable ? "pointer" : "default" }}
+                    title={
+                      flippable
+                        ? flipped[card.id]
+                          ? "点击查看正面"
+                          : "点击查看背面"
+                        : undefined
+                    }
+                    onClick={
+                      flippable
+                        ? () => setFlipped((s) => ({ ...s, [card.id]: !s[card.id] }))
+                        : undefined
+                    }
+                  >
+                    {card.front_image ? (
                       <img
                         src={(flipped[card.id] ? card.back_image : card.front_image) || undefined}
                         alt={flipped[card.id] ? card.back || card.front : card.front}
                         loading="lazy"
                       />
-                      {isFlippable(card) && (
-                        <span className={style.faceBadge}>{flipped[card.id] ? "背面" : "正面"}</span>
-                      )}
-                    </div>
-                  )}
+                    ) : (
+                      <p className={style.cardText}>
+                        {(flipped[card.id] ? card.back || card.front : card.front) || "暂无卡面信息"}
+                      </p>
+                    )}
+                    {flippable && (
+                      <span className={style.faceBadge}>{flipped[card.id] ? "背面" : "正面"}</span>
+                    )}
+                  </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
 

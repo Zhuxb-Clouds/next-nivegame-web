@@ -114,6 +114,20 @@
   object-fit: contain;
   display: block;
 }
+/* 无卡图时的文字回退：直接在卡面框里排卡面文字 */
+.cardText {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #333;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
+}
 .faceBadge {
   position: absolute;
   right: 10px;

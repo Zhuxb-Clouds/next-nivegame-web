@@ -8,18 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      # 仓库依赖管理已统一到 pnpm（锁文件与安全 overrides 均在 pnpm 侧），
+      # 旧 workflow 的 yarn 1 读不到 pnpm-workspace.yaml 的 overrides
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: 20.12.2
-      - run: npm install -g yarn@1.22.22
+          version: 11.3.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
-      - name: yarn install and build
+      - name: install and build
         env:
           NEXT_PUBLIC_BASE_URL: "https://nivegame.huashuocard.cn"
         run: |
-          yarn
-          yarn build
+          pnpm install --frozen-lockfile
+          pnpm build
 
       - name: prepare remote dir
         uses: appleboy/ssh-action@v1.0.0

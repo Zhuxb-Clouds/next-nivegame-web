@@ -16,7 +16,8 @@ jobs:
           version: 11.3.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          # 与 package.json engines 及 Vercel 构建保持一致（Node 20 已停用）
+          node-version: 26
           cache: pnpm
 
       - name: install and build

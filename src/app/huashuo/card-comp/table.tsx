@@ -41,11 +41,11 @@ export default function Page() {
   const [total, setTotal] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(24);
-  // 双面卡（人物牌/箴言牌）的翻面状态：cardId -> 是否显示背面
+  // 卡牌翻面状态：cardId -> 是否显示背面
   const [flipped, setFlipped] = useState<Record<number, boolean>>({});
 
-  const isFlippable = (card: cardType) =>
-    (card.type === 5 || card.type === 6) && !!card.back_image;
+  // 有背面图即可翻面（不限卡牌类型）
+  const isFlippable = (card: cardType) => !!card.back_image;
 
   const handlePaginationChange = (page: number, size?: number) => {
     setCurrentPage(page);
